@@ -1,0 +1,29 @@
+namespace ContextoDePagamento.Domain.Entidades
+{
+    public class Paypal : FormaDePagamento
+    {
+        public Paypal(
+            string codigoDaTransacao,
+            DateTime dataDoPagamento,
+            DateTime dateDeExpiracaoDoPagamento,
+            decimal total,
+            decimal totalPago,
+            string proprietario,
+            string documento,
+            string endereco,
+            string email) : base(
+                dataDoPagamento,
+                dateDeExpiracaoDoPagamento,
+                total,
+                totalPago,
+                proprietario,
+                documento,
+                endereco,
+                email)
+        {
+            CodigoDaTransacao = codigoDaTransacao;
+        }
+
+        public string CodigoDaTransacao { get; private set; }
+    }
+}

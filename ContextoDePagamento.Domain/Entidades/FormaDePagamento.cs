@@ -2,32 +2,27 @@ namespace ContextoDePagamento.Domain.Entidades
 {
     public abstract class FormaDePagamento
     {
-        public string Numero { get; set; }
-        public DateTime DataDoPagamento { get; set; }
-        public DateTime DateDeExpiracaoDoPagamento { get; set; }
-        public decimal Total { get; set; }
-        public decimal TotalPago { get; set; }
-        public string Proprietario { get; set; }
-        public string Documento { get; set; }
-        public string Endereco { get; set; }
-        public string Email { get; set; }
-    }
+        public FormaDePagamento(DateTime dataDoPagamento, DateTime dateDeExpiracaoDoPagamento, decimal total, decimal totalPago, string proprietario, string documento, string endereco, string email)
+        {
+            Numero = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
+            DataDoPagamento = dataDoPagamento;
+            DateDeExpiracaoDoPagamento = dateDeExpiracaoDoPagamento;
+            Total = total;
+            TotalPago = totalPago;
+            Proprietario = proprietario;
+            Documento = documento;
+            Endereco = endereco;
+            Email = email;
+        }
 
-    public class Boleto : FormaDePagamento
-    {
-        public string CodigoDeBarras { get; set; }
-        public string NumeroDoBoleto { get; set; }
-    }
-
-    public class CartaoDeCredito : FormaDePagamento
-    {
-        public string NomeDoTitular { get; set; }
-        public string NumeroDoCartao { get; set; }
-        public string NumeroDaUltimaTransacao { get; set; }
-    }
-
-    public class Paypal : FormaDePagamento
-    {
-        public string CodigoDaTransacao { get; set; }
+        public string Numero { get; private set; }
+        public DateTime DataDoPagamento { get; private set; }
+        public DateTime DateDeExpiracaoDoPagamento { get; private set; }
+        public decimal Total { get; private set; }
+        public decimal TotalPago { get; private set; }
+        public string Proprietario { get; private set; }
+        public string Documento { get; private set; }
+        public string Endereco { get; private set; }
+        public string Email { get; private set; }
     }
 }
