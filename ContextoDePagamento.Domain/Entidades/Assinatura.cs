@@ -1,6 +1,9 @@
+using ContextoContextoDePagamento.Shared.Entidades;
+using Flunt.Validations;
+
 namespace ContextoDePagamento.Domain.Entidades
 {
-    public class Assinatura
+    public class Assinatura : Entidade
     {
         private IList<FormaDePagamento> _formasDePagamento;
         public Assinatura(DateTime? dataDeExpiracao)
@@ -20,6 +23,15 @@ namespace ContextoDePagamento.Domain.Entidades
 
         public void AdicionarFormaDePagamento(FormaDePagamento formaDePagamento)
         {
+            AddNotifications(new Contract()
+                .Requires()
+                .IsGreaterThan(
+                    DateTime.Now,
+                    formaDePagamento.DataDoPagamento,
+                    "Assinatura.FormasDePagamento",
+                    "A data do pagamento deve ser futura")
+            );
+
             _formasDePagamento.Add(formaDePagamento);
         }
 

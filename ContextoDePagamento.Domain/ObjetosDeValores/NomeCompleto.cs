@@ -1,4 +1,5 @@
 using ContextoContextoDePagamento.Shared.ObjetosDeValores;
+using Flunt.Validations;
 
 namespace ContextoDePagamento.Domain.ObjetosDeValores
 {
@@ -9,8 +10,11 @@ namespace ContextoDePagamento.Domain.ObjetosDeValores
             Nome = nome;
             Sobrenome = sobrenome;
 
-            if (string.IsNullOrEmpty(Nome))
-                AddNotification("NomeCompleto.Nome", "Nome inválido");
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(Nome, 3, "NomeCompleto.Nome", "Nome deve conter pelo menos 3 caracteres")
+                .HasMinLen(Sobrenome, 3, "NomeCompleto.Sobrenome", "Sobrenome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(Nome, 40, "NomeCompleto.Nome", "Nome deve conter até 40 caracteres"));
         }
 
         public string Nome { get; private set; }

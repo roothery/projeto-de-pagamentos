@@ -1,4 +1,5 @@
 using ContextoContextoDePagamento.Shared.ObjetosDeValores;
+using Flunt.Validations;
 
 namespace ContextoDePagamento.Domain.ObjetosDeValores
 {
@@ -20,6 +21,10 @@ namespace ContextoDePagamento.Domain.ObjetosDeValores
             Estado = estado;
             Pais = pais;
             Cep = cep;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(Rua, 3, "Endereco.Rua", "Rua deve conter pelo menos 3 caracteres"));
         }
 
         public string Rua { get; set; }

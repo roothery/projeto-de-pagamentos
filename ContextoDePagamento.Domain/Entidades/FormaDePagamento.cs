@@ -1,8 +1,10 @@
+using ContextoContextoDePagamento.Shared.Entidades;
 using ContextoDePagamento.Domain.ObjetosDeValores;
+using Flunt.Validations;
 
 namespace ContextoDePagamento.Domain.Entidades
 {
-    public abstract class FormaDePagamento
+    public abstract class FormaDePagamento : Entidade
     {
         public FormaDePagamento(
             DateTime dataDoPagamento,
@@ -23,6 +25,15 @@ namespace ContextoDePagamento.Domain.Entidades
             Documento = documento;
             Endereco = endereco;
             Email = email;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsGreaterThan(0, Total, "FormaDePagamento.Total", "O total não pode ser zero")
+                .IsGreaterOrEqualsThan(
+                    Total,
+                    TotalPago,
+                    "FormaDePagamento.TotalPago", "O valor pago é menor que o valor do pagamento")
+            );
         }
 
         public string Numero { get; private set; }

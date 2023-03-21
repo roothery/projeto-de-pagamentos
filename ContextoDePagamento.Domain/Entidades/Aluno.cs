@@ -1,5 +1,6 @@
 using ContextoContextoDePagamento.Shared.Entidades;
 using ContextoDePagamento.Domain.ObjetosDeValores;
+using Flunt.Validations;
 
 namespace ContextoDePagamento.Domain.Entidades
 {
@@ -24,10 +25,15 @@ namespace ContextoDePagamento.Domain.Entidades
 
         public void AdicionarAssinatura(Assinatura assinatura)
         {
-            foreach (var ass in Assinaturas)
-                ass.AlterarAssinatura(false);
+            var temAssinaturaAtiva = false;
+            foreach (var ass in _assinaturas)
+            {
+                if (ass.Ativo)
+                    temAssinaturaAtiva = true;
+            }
 
-            _assinaturas.Add(assinatura);
+            if (temAssinaturaAtiva)
+                AddNotification("Aluno.Assinaturas", "Você já tem assinatura ativa");
         }
     }
 }
