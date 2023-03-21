@@ -1,8 +1,18 @@
+using ContextoDePagamento.Domain.ObjetosDeValores;
+
 namespace ContextoDePagamento.Domain.Entidades
 {
     public abstract class FormaDePagamento
     {
-        public FormaDePagamento(DateTime dataDoPagamento, DateTime dateDeExpiracaoDoPagamento, decimal total, decimal totalPago, string proprietario, string documento, string endereco, string email)
+        public FormaDePagamento(
+            DateTime dataDoPagamento,
+            DateTime dateDeExpiracaoDoPagamento,
+            decimal total,
+            decimal totalPago,
+            string proprietario,
+            Documento documento,
+            Endereco endereco,
+            Email email)
         {
             Numero = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
             DataDoPagamento = dataDoPagamento;
@@ -21,8 +31,8 @@ namespace ContextoDePagamento.Domain.Entidades
         public decimal Total { get; private set; }
         public decimal TotalPago { get; private set; }
         public string Proprietario { get; private set; }
-        public string Documento { get; private set; }
-        public string Endereco { get; private set; }
-        public string Email { get; private set; }
+        public Documento Documento { get; private set; }
+        public Endereco Endereco { get; private set; }
+        public Email Email { get; private set; }
     }
 }

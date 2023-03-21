@@ -1,3 +1,5 @@
+using ContextoDePagamento.Domain.ObjetosDeValores;
+
 namespace ContextoDePagamento.Domain.Entidades
 {
     public class CartaoDeCredito : FormaDePagamento
@@ -11,9 +13,9 @@ namespace ContextoDePagamento.Domain.Entidades
             decimal total,
             decimal totalPago,
             string proprietario,
-            string documento,
-            string endereco,
-            string email) : base(
+            Documento documento,
+            Endereco endereco,
+            Email email) : base(
                 dataDoPagamento,
                 dateDeExpiracaoDoPagamento,
                 total,

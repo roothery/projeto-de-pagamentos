@@ -1,22 +1,23 @@
+using ContextoContextoDePagamento.Shared.Entidades;
+using ContextoDePagamento.Domain.ObjetosDeValores;
+
 namespace ContextoDePagamento.Domain.Entidades
 {
-    public class Aluno
+    public class Aluno : Entidade
     {
         private IList<Assinatura> _assinaturas;
-        public Aluno(string nome, string sobrenome, string documento, string email)
+        public Aluno(NomeCompleto nome, Documento documento, Email email)
         {
             Nome = nome;
-            Sobrenome = sobrenome;
             Documento = documento;
             Email = email;
             _assinaturas = new List<Assinatura>();
         }
 
-        public string Nome { get; private set; }
-        public string Sobrenome { get; private set; }
-        public string Documento { get; private set; }
-        public string Email { get; private set; }
-        public string Endereco { get; private set; }
+        public NomeCompleto Nome { get; private set; }
+        public Documento Documento { get; private set; }
+        public Email Email { get; private set; }
+        public Endereco Endereco { get; private set; }
         public IReadOnlyCollection<Assinatura> Assinaturas { get { return _assinaturas.ToArray(); } }
 
         public void AdicionarAssinatura(Assinatura assinatura)
