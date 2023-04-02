@@ -32,8 +32,16 @@ namespace ContextoDePagamento.Domain.Entidades
                     temAssinaturaAtiva = true;
             }
 
-            if (temAssinaturaAtiva)
-                AddNotification("Aluno.Assinaturas", "Você já tem assinatura ativa");
+            AddNotifications(new Contract()
+                .Requires()
+                .IsFalse(temAssinaturaAtiva, "Aluno.Assinaturas", "Você já tem uma assinatura ativa")
+                .AreNotEquals(0, assinatura.FormasDePagamento.Count,
+                             "Aluno.Assinaturas.FormasDePagamento",
+                             "Esta assinatura não possui pagamentos")
+            );
+
+            if (Valid)
+                _assinaturas.Add(assinatura);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ContextoDePagamento.Domain.Entidades
         public DateTime DataDaUltimaAtualizacao { get; private set; }
         public DateTime? DataDeExpiracao { get; private set; }
         public bool Ativo { get; private set; }
-        public IReadOnlyCollection<FormaDePagamento> FormasDePagamento { get; private set; }
+        public IReadOnlyCollection<FormaDePagamento> FormasDePagamento { get { return _formasDePagamento.ToArray(); } }
 
         public void AdicionarFormaDePagamento(FormaDePagamento formaDePagamento)
         {
