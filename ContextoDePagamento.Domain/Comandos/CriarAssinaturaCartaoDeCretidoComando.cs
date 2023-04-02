@@ -1,6 +1,6 @@
 using ContextoDePagamento.Domain.Enums;
 
-namespace ContextoContextoDePagamento.Domain.Comandos
+namespace ContextoDePagamento.Domain.Comandos
 {
     public class CriarAssinaturaCartaoDeCreditoComando
     {

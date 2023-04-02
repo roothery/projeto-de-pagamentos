@@ -1,4 +1,4 @@
-using ContextoContextoDePagamento.Shared.Entidades;
+using ContextoDePagamento.Shared.Entidades;
 using Flunt.Validations;
 
 namespace ContextoDePagamento.Domain.Entidades

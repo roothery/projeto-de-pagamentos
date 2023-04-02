@@ -1,4 +1,4 @@
-namespace ContextoContextoDePagamento.Shared.Comandos
+namespace ContextoDePagamento.Shared.Comandos
 {
     public interface IComando
     {

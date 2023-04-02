@@ -1,6 +1,6 @@
 using Flunt.Notifications;
 
-namespace ContextoContextoDePagamento.Shared.ObjetosDeValores
+namespace ContextoDePagamento.Shared.ObjetosDeValores
 {
     public abstract class ObjetoDeValor : Notifiable
     {

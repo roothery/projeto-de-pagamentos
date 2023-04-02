@@ -1,7 +1,6 @@
-using ContextoContextoDePagamento.Domain.Comandos;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ContextoDePagamento.Domain.Comandos;
 
-namespace ContextoContextoDePagamento.Tests
+namespace ContextoDePagamento.Tests
 {
     [TestClass]
     public class CriarAssinaturaBoletoComandoTests

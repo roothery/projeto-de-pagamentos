@@ -1,4 +1,4 @@
-using ContextoContextoDePagamento.Shared.ObjetosDeValores;
+using ContextoDePagamento.Shared.ObjetosDeValores;
 using ContextoDePagamento.Domain.Enums;
 using Flunt.Validations;
 

@@ -1,8 +1,8 @@
-using ContextoContextoDePagamento.Shared.Comandos;
+using ContextoDePagamento.Shared.Comandos;
 using ContextoDePagamento.Domain.Enums;
 using Flunt.Notifications;
 
-namespace ContextoContextoDePagamento.Domain.Comandos
+namespace ContextoDePagamento.Domain.Comandos
 {
     public class CriarAssinaturaPaypalComando : Notifiable, IComando
     {
