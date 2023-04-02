@@ -84,7 +84,6 @@ namespace ContextoDePagamento.Domain.Handlers
             if (_alunoRepositorio.ExisteEmail(comando.Email))
                 AddNotification("Email", "Este E-mail já está em uso");
 
-            // Gerar os VOs
             var nomeCompleto = new NomeCompleto(comando.Nome, comando.Sobrenome);
             var documento = new Documento(comando.Documento, ETipoDeDocumento.CPF);
             var email = new Email(comando.Email);
@@ -110,6 +109,9 @@ namespace ContextoDePagamento.Domain.Handlers
             aluno.AdicionarAssinatura(assinatura);
 
             AddNotifications(nomeCompleto, documento, email, endereco, aluno, assinatura, payPal);
+
+            if (Invalid)
+                return new ComandoResult(false, "Não foi possível realizar sua assinatura");
 
             _alunoRepositorio.CriarAssinatura(aluno);
 
