@@ -1,8 +1,11 @@
+using ContextoContextoDePagamento.Shared.Comandos;
 using ContextoDePagamento.Domain.Enums;
+using Flunt.Notifications;
+using Flunt.Validations;
 
 namespace ContextoContextoDePagamento.Domain.Comandos
 {
-    public class CriarAssinaturaBoletoComando
+    public class CriarAssinaturaBoletoComando : Notifiable, IComando
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
@@ -29,5 +32,14 @@ namespace ContextoContextoDePagamento.Domain.Comandos
         public string Estado { get; set; }
         public string Pais { get; set; }
         public string Cep { get; set; }
+
+        public void Validar()
+        {
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(Nome, 3, "NomeCompleto.Nome", "Nome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(Nome, 40, "NomeCompleto.Nome", "Nome deve conter até 40 caracteres")
+            );
+        }
     }
 }

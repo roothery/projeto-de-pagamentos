@@ -1,8 +1,10 @@
+using ContextoContextoDePagamento.Shared.Comandos;
 using ContextoDePagamento.Domain.Enums;
+using Flunt.Notifications;
 
 namespace ContextoContextoDePagamento.Domain.Comandos
 {
-    public class CriarAssinaturaPaypalComando
+    public class CriarAssinaturaPaypalComando : Notifiable, IComando
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
@@ -27,5 +29,10 @@ namespace ContextoContextoDePagamento.Domain.Comandos
         public string Estado { get; set; }
         public string Pais { get; set; }
         public string Cep { get; set; }
+
+        public void Validar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
