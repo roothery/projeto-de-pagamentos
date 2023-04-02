@@ -19,5 +19,9 @@ namespace ContextoDePagamento.Domain.ObjetosDeValores
 
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }
+        public override string ToString()
+        {
+            return $"{Nome} {Sobrenome}";
+        }
     }
 }
